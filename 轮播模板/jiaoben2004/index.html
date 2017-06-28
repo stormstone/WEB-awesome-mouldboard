@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>jquery全屏banner自动轮播切换 - 站长素材</title>
+		<script type="text/javascript" src="js/jquery.js" /></script>
+		<script type="text/javascript">
+			function banner() {
+				var bn_id = 0;
+				var bn_id2 = 1;
+				var speed33 = 5000;
+				var qhjg = 1;
+				var MyMar33;
+				$("#banner .d1").hide();
+				$("#banner .d1").eq(0).fadeIn("slow");
+				if($("#banner .d1").length > 1) {
+					$("#banner_id li").eq(0).addClass("nuw");
+
+					function Marquee33() {
+						bn_id2 = bn_id + 1;
+						if(bn_id2 > $("#banner .d1").length - 1) {
+							bn_id2 = 0;
+						}
+						$("#banner .d1").eq(bn_id).css("z-index", "2");
+						$("#banner .d1").eq(bn_id2).css("z-index", "1");
+						$("#banner .d1").eq(bn_id2).show();
+						$("#banner .d1").eq(bn_id).fadeOut("slow");
+						$("#banner_id li").removeClass("nuw");
+						$("#banner_id li").eq(bn_id2).addClass("nuw");
+						bn_id = bn_id2;
+					};
+
+					MyMar33 = setInterval(Marquee33, speed33);
+
+					$("#banner_id li").click(function() {
+						var bn_id3 = $("#banner_id li").index(this);
+						if(bn_id3 != bn_id && qhjg == 1) {
+							qhjg = 0;
+							$("#banner .d1").eq(bn_id).css("z-index", "2");
+							$("#banner .d1").eq(bn_id3).css("z-index", "1");
+							$("#banner .d1").eq(bn_id3).show();
+							$("#banner .d1").eq(bn_id).fadeOut("slow", function() {
+								qhjg = 1;
+							});
+							$("#banner_id li").removeClass("nuw");
+							$("#banner_id li").eq(bn_id3).addClass("nuw");
+							bn_id = bn_id3;
+						}
+					})
+					$("#banner_id").hover(
+						function() {
+							clearInterval(MyMar33);
+						},
+						function() {
+							MyMar33 = setInterval(Marquee33, speed33);
+						}
+					)
+				} else {
+					$("#banner_id").hide();
+				}
+			}
+		</script>
+
+	</head>
+
+	<body>
+
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+			}
+			
+			a,
+			img {
+				border: 0;
+			}
+			
+			body {
+				font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+			}
+			/* banner */
+			
+			.banner {
+				height: 400px;
+				overflow: hidden;
+			}
+			
+			.banner .d1 {
+				width: 100%;
+				height: 392px;
+				display: block;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			
+			.banner .d2 {
+				width: 100%;
+				height: 30px;
+				clear: both;
+				position: absolute;
+				z-index: 100;
+				left: 0px;
+				top: 360px;
+			}
+			
+			.banner .d2 ul {
+				float: left;
+				position: absolute;
+				left: 50%;
+				top: 0;
+				margin: 0 0 0 -96px;
+				display: inline;
+			}
+			
+			.banner .d2 li {
+				width: 17px;
+				height: 15px;
+				overflow: hidden;
+				cursor: pointer;
+				background: url(images/img1.png) no-repeat center;
+				float: left;
+				margin: 0 3px;
+				display: inline;
+			}
+			
+			.banner .d2 li.nuw {
+				background: url(images/img1_1.png) no-repeat center;
+			}
+		</style>
+
+		<div class="banner" id="banner">
+			<a href="http://sc.chinaz.com/" class="d1" style="background:url(images/banner1.jpg) center no-repeat;"></a>
+			<a href="http://sc.chinaz.com/" class="d1" style="background:url(images/banner2.jpg) center no-repeat;"></a>
+			<a href="http://sc.chinaz.com/" class="d1" style="background:url(images/banner3.jpg) center no-repeat;"></a>
+			<a href="http://sc.chinaz.com/" class="d1" style="background:url(images/banner4.jpg) center no-repeat;"></a>
+			<a href="http://sc.chinaz.com/" class="d1" style="background:url(images/banner5.jpg) center no-repeat;"></a>
+			<div class="d2" id="banner_id">
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			banner()
+		</script>
+		<div style="text-align:center;clear:both">
+		</div>
+	</body>
+
+</html>

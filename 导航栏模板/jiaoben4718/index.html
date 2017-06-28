@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>纯CSS3制作蓝色滑动下拉菜单 - 站长素材</title>
+
+<style  type="text/css">
+body{
+	margin:0;
+	font-family:'微软雅黑','Times New Roman', Times, serif;
+	}
+.navi_head{
+	height:50px;
+	background-color:#459df5;
+}
+.navi_body{
+	overflow:hidden;
+	height:50px;
+	background:rgba(36,97,158,0.9);
+	transition:height ease 0.5s;
+}
+.navi_body:hover{
+	height:300px;
+}
+
+.navi_head>div>span{
+	width:150px;
+	text-align:center;
+	height:300px;
+	display:inline-block;
+	font-weight:bold;
+	color:#FFF;
+	font-size:14px;
+	vertical-align:top;
+}
+
+.navi_head>div>span>p a{
+	color:#FFF;
+	text-decoration:none;
+}
+.navi_head>div>span>p a:hover{
+	color:#FFF;
+	text-decoration:underline;
+}
+
+.navi_title{
+	font-size:16px;
+	line-height:50px;
+	margin-top:0;
+}
+
+.navi_head>div>span:hover{
+	background:rgba(100,100,100,0.2);
+}
+</style>
+
+</head>
+<body>
+
+<div>
+	<div class="navi_body">
+		<div class="navi_head">
+			<div style="width:80%; margin-left:auto; margin-right:auto;">
+				<span>
+					<p class="navi_title">首页</p>
+				</span>
+				<span>
+					<p class="navi_title">关于我们</p>
+					<p><a href="">团队介绍</a></p>
+					<p><a href="">服务QQ群</a></p>
+					<p><a href="">个人业务</a></p>
+				</span>
+				<span>
+					<p class="navi_title">软件下载</p>
+					<p><a href="">WEB编译工具</a></p>
+					<p><a href="">桌面整理工具</a></p>
+				</span>
+				<span>
+					<p class="navi_title">招贤纳士</p>
+					<p><a href="">WEB前端工程师</a></p>
+					<p><a href="">JAVAWEB工程师</a></p>
+					<p><a href="">APP开发工程师</a></p>
+					<p><a href="">数据库工程师</a></p>
+					<p><a href="">软件架构师</a></p>
+					<p><a href="">技术客服</a></p>
+				</span>
+				<span>
+					<p class="navi_title">给我留言</p>
+					<p><a href="">站内留言</a></p>
+					<p><a href="">站长信箱</a></p>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>
