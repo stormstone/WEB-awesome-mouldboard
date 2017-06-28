@@ -1,0 +1,191 @@
+@import "compass/css3";
+
+.clearfix {
+  zoom: 1;
+	&:before, &:after { content: ""; display: table; }
+	&:after { clear: both; }
+}
+
+//fonts
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+//colours
+$darkblue: #556270;
+$blue:#4ECDC4;
+$green:#C7F464;
+$red:#FF6B6B;
+$purple: #B0698B; 
+$darkred:#C44D58;
+
+@mixin css-gradient($from: #dfdfdf, $to: #f8f8f8) {
+	background-color: $to;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+	background-image: -webkit-linear-gradient(top, $from, $to);
+	background-image: -moz-linear-gradient(top, $from, $to);
+	background-image: -o-linear-gradient(top, $from, $to);
+	background-image: linear-gradient(to bottom, $from, $to);
+}
+@mixin box-sizing($type: border-box) {
+	-webkit-box-sizing: $type;
+	-moz-box-sizing:    $type;
+	-ms-box-sizing:     $type;
+	box-sizing:         $type;
+}
+
+
+@mixin prefix($prop, $value){
+  -webkit-#{$prop}: $value; -moz-#{$prop}: $value; -o-#{$prop}: $value; -ms-#{$prop}: $value;
+}
+
+@mixin listfix(){
+    display:block; padding:0; margin:0 0 0; list-style:none; 
+}
+
+* { @include box-sizing(); }
+
+body {
+  background:#1d1d1f;
+  font-family:'lato', helvetica, arial, sans-serif;
+  color:white; 
+}
+
+#wrapper {
+  display:block; 
+  width:90%;
+  margin:50px auto; 
+  
+}
+.slider-outer{
+  display:block;
+  width:100%;
+  height:250px;
+  position:relative;
+  @include prefix(perspective, 1600px);
+  
+  .slider-inner {
+    display:block;
+    width:100%;
+    @include prefix(transform-style, preserve-3d);
+    @include prefix(transition, all .3s linear);
+    @include prefix(transform-origin, 50% 100%);
+    
+    &.rotate{
+      &.two{
+        @include prefix(transform, rotateX(-90deg) translateZ(250px)) 
+      }
+      &.three{
+        @include prefix(transform, rotateX(-180deg) translateY(-250px) translateZ(250px)) 
+      }
+      &.four{
+        @include prefix(transform, rotateX(-270deg) translateY(-250px))
+      }
+    }
+  }
+  
+  .slide {
+    display:block;
+    width:100%;
+    height:250px;
+    position:absolute;
+    background:white;
+    @include css-gradient(white, darken(white, 7%));
+    padding:27px;
+    color:$blue;
+    overflow:hidden; 
+    @include prefix(transform-origin, 0% 0%);
+     
+    //opacity:0.7;
+    
+    .slide-title{
+      display:block; 
+      position:relative;
+      font-size:70px; 
+      font-weight:100;
+      z-index:12; 
+    }
+    
+    i{
+      display:block;
+      position:absolute;
+      top:10px; 
+      right:-10px; 
+      font-size:300px;
+      color:$green; 
+      z-index:11;
+      text-shadow:1px 2px 1px rgba(0,0,0,0.1);
+    }
+    
+    &.top{
+      background:$darkblue;
+      @include css-gradient($darkblue, darken($darkblue, 7%));
+      @include prefix(transform, rotateX(90deg) translateY(-250px));  
+    }
+    &.back {
+      background:$red;
+      color:white; 
+      @include css-gradient($red, darken($red, 7%));
+      @include prefix(transform, rotateX(180deg) translateY(-250px) translateZ(250px)) 
+    }
+    &.bottom {
+      background:$blue;
+      @include css-gradient($blue, darken($blue, 7%));
+      color:white;
+      @include prefix(transform, rotateX(-90deg) translateZ(250px)) 
+    }
+  }
+  
+}
+
+#nav {
+  display:block;
+  position:relative; 
+  width:100%;
+  margin-top:27px;
+  z-index:10;
+  
+  ul{
+    @include listfix;
+    width:(40px * 4 ) + (10px * 3);
+    margin:0 auto; 
+    text-align:left; 
+    
+    li {
+      display:block;
+      float:left;
+      margin-right:10px;
+      font-size:18px;
+      
+      &:nth-of-type(4){
+        margin-right:0;  
+      }
+      
+      a.btn{
+        display:block;
+        width:40px;
+        height:40px;
+        color:white; 
+        border:3px solid white;
+        border-radius:30px; 
+        font-weight:300;
+        line-height:35px;
+        text-align:center; 
+        text-decoration:none; 
+        @include prefix(transition, all .2s linear); 
+        
+        &:focus,
+        &:hover {
+          color:$red;
+          border-color:$red; 
+        }
+        &:active {
+          color:$darkred;
+          border-color:$darkred;
+        }
+        &.focus{
+          color:$green;
+          border-color:$green; 
+        }
+      }
+    }
+  }
+}

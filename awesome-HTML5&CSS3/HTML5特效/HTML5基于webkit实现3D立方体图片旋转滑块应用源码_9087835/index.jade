@@ -1,0 +1,23 @@
+body 
+  #wrapper.clearfix
+    .slider-outer
+      .slider-inner
+        .slide.front.active(data-slide="1")
+          .slide-title Slide 1
+            i(class="fa fa-html5")
+        .slide.top(data-slide="2")
+          .slide-title Slide 2
+            i(class="fa fa-css3")
+        .slide.back(data-slide="3")
+          .slide-title Slide 3
+            i(class="fa fa-android")
+        .slide.bottom(data-slide="4")
+          .slide-title Slide 4
+            i(class="fa fa-mobile-phone")
+          
+    nav#nav.clearfix
+      ul.clearfix
+        li: a(href, class='btn focus', data-slide="1") 1
+        li: a(href, class='btn', data-slide="2") 2
+        li: a(href, class='btn', data-slide="3") 3
+        li: a(href, class='btn', data-slide="4") 4
