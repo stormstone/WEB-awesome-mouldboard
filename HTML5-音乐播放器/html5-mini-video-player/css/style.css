@@ -1,0 +1,226 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:300);
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1f323e;
+  background: radial-gradient(80% 0%, ellipse cover, #426168 0%, rgba(49, 67, 74, 0.1) 100%), radial-gradient(20% 100%, ellipse cover, #080d11 0%, #243a43 100%);
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+video {
+  border-radius: 6px;
+}
+
+/* video container */
+.videoContainer {
+  width: 380px;
+  height: 163px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  color: #ccc;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin: 50px auto 0;
+}
+
+.videoContainer:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  z-index: 6;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+/* video caption css */
+.caption {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 10px;
+  color: #ddd;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  border-radius: 6px 6px 0 0;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+}
+
+/*** VIDEO CONTROLS CSS ***/
+/* control holder */
+.control {
+  color: #ccc;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 360px;
+  z-index: 5;
+  display: none;
+}
+
+/* control bottom part */
+.btmControl {
+  clear: both;
+}
+
+.control .btnPlay {
+  float: left;
+  width: 34px;
+  height: 30px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  border-radius: 6px 0 0 6px;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.control .icon-play {
+  background: url(http://s.cdpn.io/6035/vp_sprite.png) no-repeat -11px 0;
+  width: 6px;
+  height: 9px;
+  display: block;
+  margin: 4px 0 0 8px;
+}
+
+.control .icon-pause {
+  background: url(http://s.cdpn.io/6035/vp_sprite.png) no-repeat -34px -1px;
+  width: 8px;
+  height: 9px;
+  display: block;
+  margin: 4px 0 0 8px;
+}
+
+.control .selected {
+  font-size: 15px;
+  color: #ccc;
+}
+
+.control .sound {
+  width: 30px;
+  height: 30px;
+  float: left;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-left: none;
+  box-shadow: inset 0 0 1px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.control .icon-sound {
+  background: url(http://s.cdpn.io/6035/vp_sprite.png) no-repeat -19px 0;
+  width: 13px;
+  height: 10px;
+  display: block;
+  margin: 8px 0 0 8px;
+}
+
+.control .muted .icon-sound {
+  width: 7px !important;
+}
+
+.control .btnFS {
+  width: 30px;
+  height: 30px;
+  border-radius: 0 6px 6px 0;
+  float: left;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-left: none;
+  box-shadow: inset 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.control .icon-fullscreen {
+  background: url(http://s.cdpn.io/6035/vp_sprite.png) no-repeat 0 0;
+  width: 10px;
+  height: 10px;
+  display: block;
+  margin: 8px 0 0 9px;
+}
+
+/* PROGRESS BAR CSS */
+/* Progress bar */
+.progress-bar {
+  height: 30px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-left: none;
+  box-shadow: inset 0 0 1px rgba(255, 255, 255, 0.5);
+  float: left;
+}
+
+.progress {
+  width: 240px;
+  height: 7px;
+  position: relative;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.4);
+  /* fallback */
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 1px 1px black;
+  border-radius: 10px;
+}
+
+.progress span {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 10px;
+}
+
+.timeBar {
+  z-index: 10;
+  width: 0;
+  background: -webkit-linear-gradient(top, #6bcce2 0%, #1da3d0 100%);
+  box-shadow: 0 0 7px rgba(107, 204, 226, 0.5);
+}
+
+.bufferBar {
+  z-index: 5;
+  width: 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* VOLUME BAR CSS */
+/* volume bar */
+.volume {
+  position: relative;
+  cursor: pointer;
+  width: 70px;
+  height: 10px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.volumeBar {
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #eee;
+  z-index: 10;
+}
